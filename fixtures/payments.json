@@ -1,0 +1,49 @@
+[
+  {
+    "model": "payments.payment",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "paid_course": 1,
+      "paid_amount": "120000.00",
+      "pay_type": "cash"
+    }
+  },{
+    "model": "payments.payment",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "paid_lesson": 4,
+      "paid_amount": "10000.00",
+      "pay_type": "trans"
+    }
+  },{
+    "model": "payments.payment",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "paid_course": 2,
+      "paid_amount": "130000.00",
+      "pay_type": "trans"
+    }
+  },{
+    "model": "payments.payment",
+    "pk": 4,
+    "fields": {
+      "user": 4,
+      "paid_lesson": 5,
+      "paid_amount": "20000.00",
+      "pay_type": "cash"
+    }
+  },{
+    "model": "payments.payment",
+    "pk": 5,
+    "fields": {
+      "user": 4,
+      "paid_lesson": 6,
+      "paid_amount": "25000.00",
+      "pay_type": "trans"
+    }
+  }
+
+]

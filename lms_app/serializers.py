@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer, SerializerMethodField, IntegerField
+from rest_framework.serializers import ModelSerializer, IntegerField
 from lms_app.models import Course, Lesson
 
 
