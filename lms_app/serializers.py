@@ -10,6 +10,7 @@ class LessonSerializer(ModelSerializer):
 
 class CourseSerializer(ModelSerializer):
     count_lessons = IntegerField(source='lesson_set.all.count')  # поле количества уроков курса
+    lessons = LessonSerializer(source='lesson_set', many=True, read_only=True)  # поле вывода уроков
 
     class Meta:
         model = Course
