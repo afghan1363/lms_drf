@@ -6,7 +6,8 @@
       "user": 2,
       "paid_course": 1,
       "paid_amount": "120000.00",
-      "pay_type": "cash"
+      "pay_type": "cash",
+      "date_of_payment": "2024-01-06"
     }
   },{
     "model": "payments.payment",
@@ -15,7 +16,8 @@
       "user": 2,
       "paid_lesson": 4,
       "paid_amount": "10000.00",
-      "pay_type": "trans"
+      "pay_type": "trans",
+      "date_of_payment": "2024-01-05"
     }
   },{
     "model": "payments.payment",
@@ -24,7 +26,8 @@
       "user": 3,
       "paid_course": 2,
       "paid_amount": "130000.00",
-      "pay_type": "trans"
+      "pay_type": "trans",
+      "date_of_payment": "2024-01-04"
     }
   },{
     "model": "payments.payment",
@@ -33,7 +36,8 @@
       "user": 4,
       "paid_lesson": 5,
       "paid_amount": "20000.00",
-      "pay_type": "cash"
+      "pay_type": "cash",
+      "date_of_payment": "2024-01-03"
     }
   },{
     "model": "payments.payment",
@@ -42,7 +46,18 @@
       "user": 4,
       "paid_lesson": 6,
       "paid_amount": "25000.00",
-      "pay_type": "trans"
+      "pay_type": "trans",
+      "date_of_payment": "2024-01-02"
+    }
+  },{
+    "model": "payments.payment",
+    "pk": 6,
+    "fields": {
+      "user": 2,
+      "paid_course": 2,
+      "paid_amount": "125000.00",
+      "pay_type": "trans",
+      "date_of_payment": "2024-01-01"
     }
   }
 
