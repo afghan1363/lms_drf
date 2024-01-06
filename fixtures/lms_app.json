@@ -1,0 +1,97 @@
+[
+  {
+    "model": "lms_app.course",
+    "pk": 1,
+    "fields": {
+      "title": "Python - Development",
+      "preview": "",
+      "description": null
+    }
+  },
+  {
+    "model": "lms_app.course",
+    "pk": 2,
+    "fields": {
+      "title": "C++ - Development",
+      "preview": "",
+      "description": null
+    }
+  },
+  {
+    "model": "lms_app.lesson",
+    "pk": 1,
+    "fields": {
+      "course": 1,
+      "title": "ООП: классы, методы и магия",
+      "description": null,
+      "preview": "",
+      "video": null
+    }
+  },
+  {
+    "model": "lms_app.lesson",
+    "pk": 2,
+    "fields": {
+      "course": 1,
+      "title": "От print до enumerate",
+      "description": null,
+      "preview": "",
+      "video": null
+    }
+  },
+  {
+    "model": "lms_app.lesson",
+    "pk": 3,
+    "fields": {
+      "course": 1,
+      "title": "Django",
+      "description": null,
+      "preview": "",
+      "video": null
+    }
+  },
+  {
+    "model": "lms_app.lesson",
+    "pk": 4,
+    "fields": {
+      "course": 2,
+      "title": "От Hello World до Counter-Strike",
+      "description": null,
+      "preview": "",
+      "video": null
+    }
+  },
+  {
+    "model": "lms_app.lesson",
+    "pk": 5,
+    "fields": {
+      "course": 2,
+      "title": "Контроллер и контролёр - сходства и различия",
+      "description": null,
+      "preview": "",
+      "video": null
+    }
+  },
+  {
+    "model": "lms_app.lesson",
+    "pk": 6,
+    "fields": {
+      "course": 2,
+      "title": "С+=1 или С++",
+      "description": null,
+      "preview": "",
+      "video": null
+    }
+  },
+  {
+    "model": "lms_app.lesson",
+    "pk": 7,
+    "fields": {
+      "course": 1,
+      "title": "DjangoRestFramework",
+      "description": null,
+      "preview": "",
+      "video": null
+    }
+  }
+]
