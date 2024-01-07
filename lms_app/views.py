@@ -13,28 +13,19 @@ class CourseViewSet(ModelViewSet):
 
     # permission_classes = (IsAuthenticated,)
 
-    def get(self):
-        if self.request.method.upper() == 'DELETE':
-            self.permission_classes = (IsAuthenticated, Author,)
-        elif self.request.method.upper() in ('PUT', 'PATCH', 'HEAD',):
-            self.permission_classes = (IsAuthenticated, Moderator, Author,)
-        elif self.request.method.upper() == 'POST':
-            self.permission_classes = (IsAuthenticated, ~ Moderator,)
-        return self.permission_classes
+    def get_permissions(self):
+        if self.action == 'create':
+            permission_classes = [IsAuthenticated, ~Moderator]
+        elif self.action == 'list' or self.action == 'retrieve':
+            permission_classes = [IsAuthenticated, Moderator | Author]
+        elif self.action == 'update' or self.action == 'destroy':
+            permission_classes = [IsAuthenticated, Author]
+        return [permission() for permission in permission_classes]
 
     def perform_create(self, serializer):
         new_course = serializer.save()
         new_course.author = self.request.user
         new_course.save()
-
-
-
-    # def get_permissions(self):
-    #     if self.request.method.upper() in ['POST', 'DELETE']:
-    #         self.permission_classes = (IsAuthenticated, Author,)
-    #     elif self.request.method.upper() == 'CREATE':
-    #         self.permission_classes = (IsAuthenticated, ~Moderator)
-    #     return self.permission_classes
 
 
 class LessonCreateView(CreateAPIView):
