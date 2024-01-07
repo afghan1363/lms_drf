@@ -1,6 +1,6 @@
 ## Домашка первая
 ### В папке fixtures сохранены фикстуры для приложений lms_app(курсы и уроки) и payments.
 ### Есть возможность создавать суперпользователя кастомной командой 
-python manage.py csu
+    python manage.py csu
 ### Есть возможность создать обычного пользователя кастомной командой 
-python manage.py create_simple_user
+    python manage.py create_simple_user
