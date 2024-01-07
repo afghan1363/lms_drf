@@ -10,16 +10,15 @@ from rest_framework.permissions import IsAuthenticated
 class CourseViewSet(ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-
     # permission_classes = (IsAuthenticated,)
 
     def get_permissions(self):
         if self.action == 'create':
-            permission_classes = [IsAuthenticated, ~Moderator]
+            permission_classes = (IsAuthenticated, ~Moderator)
         elif self.action == 'list' or self.action == 'retrieve':
-            permission_classes = [IsAuthenticated, Moderator | Author]
+            permission_classes = (IsAuthenticated, Moderator | Author)
         elif self.action == 'update' or self.action == 'destroy':
-            permission_classes = [IsAuthenticated, Author]
+            permission_classes = (IsAuthenticated, Author | Moderator)
         return [permission() for permission in permission_classes]
 
     def perform_create(self, serializer):
