@@ -5,7 +5,8 @@
     "fields": {
       "title": "Python - Development",
       "preview": "",
-      "description": null
+      "description": null,
+      "author": 4
     }
   },
   {
@@ -14,7 +15,8 @@
     "fields": {
       "title": "C++ - Development",
       "preview": "",
-      "description": null
+      "description": null,
+      "author": 2
     }
   },
   {
@@ -22,10 +24,11 @@
     "pk": 1,
     "fields": {
       "course": 1,
-      "title": "ООП: классы, методы и магия",
+      "title": "ООП: классы, методы и магия методов",
       "description": null,
       "preview": "",
-      "video": null
+      "video": null,
+      "author": 4
     }
   },
   {
@@ -36,7 +39,8 @@
       "title": "От print до enumerate",
       "description": null,
       "preview": "",
-      "video": null
+      "video": null,
+      "author": 3
     }
   },
   {
@@ -47,7 +51,8 @@
       "title": "Django",
       "description": null,
       "preview": "",
-      "video": null
+      "video": null,
+      "author": 4
     }
   },
   {
@@ -58,7 +63,8 @@
       "title": "От Hello World до Counter-Strike",
       "description": null,
       "preview": "",
-      "video": null
+      "video": null,
+      "author": 2
     }
   },
   {
@@ -69,7 +75,8 @@
       "title": "Контроллер и контролёр - сходства и различия",
       "description": null,
       "preview": "",
-      "video": null
+      "video": null,
+      "author": 2
     }
   },
   {
@@ -80,7 +87,8 @@
       "title": "С+=1 или С++",
       "description": null,
       "preview": "",
-      "video": null
+      "video": null,
+      "author": 4
     }
   },
   {
@@ -91,7 +99,8 @@
       "title": "DjangoRestFramework",
       "description": null,
       "preview": "",
-      "video": null
+      "video": null,
+      "author": 3
     }
   }
 ]

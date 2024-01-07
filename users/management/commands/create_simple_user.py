@@ -8,7 +8,7 @@ class Command(BaseCommand):
         first_name = input('first_name: ')
         last_name = input('last_name: ')
         password = 'SkyPro123'
-        is_moderator = bool(int(input('is_moderator 1 - True, 0 - False: ')))
+        is_moderator = bool(int(input('is_moderator: 1 - True, 0 - False: ')))
         user = User.objects.create(
             email=email,
             first_name=first_name,
