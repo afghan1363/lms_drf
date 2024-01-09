@@ -1,11 +1,12 @@
-import urlextract
+from urlextract import URLExtract
 from rest_framework.serializers import ValidationError
 
-youtube_urls = ['https://youtube.com', 'http://youtube.com', 'www.youtube.com', 'youtu.be/', 'youtube.com']
+youtube_urls = ['https://youtube.com', 'http://youtube.com', 'https://www.youtube.com', 'https://www.youtube.com',
+                'youtu.be/', 'youtube.com', 'http://youtu.be/', 'https://youtu.be/']
 
 
 def validate_dogs_data(value):
-    extractor = urlextract.URLExtract()
+    extractor = URLExtract()
     urls_in_text = extractor.find_urls(value)
     validated_list = []
     for url in urls_in_text:

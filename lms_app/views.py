@@ -1,15 +1,18 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
-from lms_app.models import Course, Lesson
-from lms_app.serializers import CourseSerializer, LessonSerializer
+from lms_app.models import Course, Lesson, Subscribe
+from lms_app.serializers import CourseSerializer, LessonSerializer, SubscribeSerializer
 from lms_app.permissions import Author, Moderator
 from rest_framework.permissions import IsAuthenticated
+from lms_app.paginators import CoursesPaginator, LessonsPaginator
 
 
 # Create your views here.
 class CourseViewSet(ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    pagination_class = CoursesPaginator
+
     # permission_classes = (IsAuthenticated,)
 
     def get_permissions(self):
@@ -42,6 +45,7 @@ class LessonListView(ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsAuthenticated,)
+    pagination_class = LessonsPaginator
 
 
 class LessonRetrieveView(RetrieveAPIView):
@@ -60,3 +64,28 @@ class LessonDestroyView(DestroyAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsAuthenticated, Author,)
+
+
+class SubscribeCreateAPIView(CreateAPIView):
+    serializer_class = SubscribeSerializer
+    queryset = Subscribe.objects.all()
+    permission_classes = (IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        new_subscribe = serializer.save()
+        new_subscribe.user = self.request.user
+        new_subscribe.course = Course.objects.get(pk=self.kwargs.get('pk'))
+        new_subscribe.is_subscribe = True
+        new_subscribe.save()
+
+
+class SubscribeUpdateAPIView(UpdateAPIView):
+    serializer_class = SubscribeSerializer
+    queryset = Subscribe.objects.all()
+    permission_classes = (IsAuthenticated, Author | Moderator,)
+
+
+class SubscribeDeleteAPIView(DestroyAPIView):
+    serializer_class = SubscribeSerializer
+    queryset = Subscribe.objects.all()
+    permission_classes = (IsAuthenticated,)
