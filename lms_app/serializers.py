@@ -12,6 +12,7 @@ class SubscribeSerializer(ModelSerializer):
 class LessonSerializer(ModelSerializer):
     title = CharField(validators=(validate_dogs_data,))
     description = CharField(validators=(validate_dogs_data,))
+    video = CharField(validators=(validate_dogs_data,))
 
     class Meta:
         model = Lesson
