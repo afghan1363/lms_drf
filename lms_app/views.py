@@ -31,6 +31,7 @@ class CourseViewSet(ModelViewSet):
 
 
 class LessonCreateView(CreateAPIView):
+    """Создание урока"""
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsAuthenticated, ~Moderator,)
@@ -42,6 +43,7 @@ class LessonCreateView(CreateAPIView):
 
 
 class LessonListView(ListAPIView):
+    """Просмотр всех уроков"""
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsAuthenticated,)
@@ -49,24 +51,28 @@ class LessonListView(ListAPIView):
 
 
 class LessonRetrieveView(RetrieveAPIView):
+    """Просмотр одного урока"""
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsAuthenticated, Author | Moderator,)
 
 
 class LessonUpdateView(UpdateAPIView):
+    """Редактирование урока"""
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsAuthenticated, Author | Moderator,)
 
 
 class LessonDestroyView(DestroyAPIView):
+    """Удаление урока"""
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsAuthenticated, Author,)
 
 
 class SubscribeCreateAPIView(CreateAPIView):
+    """Создание подписки на курс"""
     serializer_class = SubscribeSerializer
     queryset = Subscribe.objects.all()
     permission_classes = (IsAuthenticated,)
@@ -80,12 +86,14 @@ class SubscribeCreateAPIView(CreateAPIView):
 
 
 class SubscribeUpdateAPIView(UpdateAPIView):
+    """Редактирование подписки на курс"""
     serializer_class = SubscribeSerializer
     queryset = Subscribe.objects.all()
     permission_classes = (IsAuthenticated, Author | Moderator,)
 
 
 class SubscribeDeleteAPIView(DestroyAPIView):
+    """Удаление подписки на курс"""
     serializer_class = SubscribeSerializer
     queryset = Subscribe.objects.all()
     permission_classes = (IsAuthenticated,)
