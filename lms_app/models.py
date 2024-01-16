@@ -11,6 +11,7 @@ class Course(models.Model):
     description = models.TextField(verbose_name='Описание', **NULLABLE)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Автор курса',
                                **NULLABLE)
+    price = models.PositiveIntegerField(default=1000000, verbose_name=' Стоимость курса')
 
     def __str__(self):
         return f'Course - {self.title}'
@@ -28,6 +29,7 @@ class Lesson(models.Model):
     video = models.CharField(max_length=550, verbose_name='Ссылка на видео', **NULLABLE)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Автор урока',
                                **NULLABLE)
+    price = models.PositiveIntegerField(default=500000, verbose_name=' Стоимость урока')
 
     def __str__(self):
         return f'Lesson - {self.title}'
