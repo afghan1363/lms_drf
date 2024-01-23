@@ -15,4 +15,3 @@ def validate_dogs_data(value):
                 validated_list.append(url)
     if len(validated_list) < len(urls_in_text):
         raise ValidationError('Ссылки разрешены только на YOUTUBE.COM')
-

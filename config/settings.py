@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_beat',
     'drf_yasg',
     'rest_framework',
     'django_filters',
@@ -175,3 +176,6 @@ SWAGGER_SETTINGS = {
     }
 }
 STRIPE_API_KEY = os.getenv('stripe_api_key')
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
