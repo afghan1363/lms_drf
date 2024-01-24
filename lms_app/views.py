@@ -45,6 +45,7 @@ class LessonCreateView(CreateAPIView):
         new_lesson = serializer.save()
         new_lesson.author = self.request.user
         new_lesson.save()
+        send_updates.delay(new_lesson.course.pk)
 
 
 class LessonListView(ListAPIView):
@@ -67,6 +68,10 @@ class LessonUpdateView(UpdateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsAuthenticated, Author | Moderator,)
+
+    def perform_update(self, serializer):
+        lesson = serializer.save()
+        send_updates.delay(lesson.course.pk)
 
 
 class LessonDestroyView(DestroyAPIView):
