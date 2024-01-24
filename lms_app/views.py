@@ -17,6 +17,7 @@ class CourseViewSet(ModelViewSet):
     # permission_classes = (IsAuthenticated,)
 
     def get_permissions(self):
+        permission_classes = (IsAuthenticated, Author)
         if self.action == 'create':
             permission_classes = (IsAuthenticated, ~Moderator)
         elif self.action == 'list' or self.action == 'retrieve':

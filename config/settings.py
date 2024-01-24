@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from datetime import timedelta
 from pathlib import Path
 import os
+
+from celery.schedules import crontab
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -177,12 +179,8 @@ CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
 CELERY_BEAT_SCHEDULE = {
     'check_user_activity': {
-        'task': 'myapp.tasks.add',
-        'schedule': 30.0,
-        'args': (16, 16),
-        'options': {
-            'expires': 15.0,
-        },
+        'task': 'lms_app.tasks.inactive_user',
+        'schedule': crontab(minute='*'),
     },
 }
 

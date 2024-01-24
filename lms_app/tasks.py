@@ -1,7 +1,10 @@
+from calendar import monthrange
+
 from celery import shared_task
 from lms_app.models import Course
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from lms_app.services import mailing_util
+from users.models import User
 
 
 @shared_task
@@ -19,3 +22,15 @@ def send_updates(inst):
         message=f'You get update in {course}!',
         recipient_list=subscribers_list,
     )
+    print('Sent')
+
+
+@shared_task
+def inactive_user():
+    now = datetime.now(tz=timezone.utc)
+    month = now.month
+    year = now.year
+    days_count = monthrange(year, month)
+    time_for_deactivate = now - timedelta(days=days_count[1])
+    user_list = User.objects.filter(last_login__lte=time_for_deactivate, is_active=True)
+    user_list.update(is_active=False)
