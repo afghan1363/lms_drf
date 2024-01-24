@@ -1,5 +1,7 @@
+import smtplib
 import stripe
 from django.conf import settings
+from django.core.mail import send_mail
 
 
 class StripePayments:
@@ -41,3 +43,19 @@ class StripePayments:
         stripe.api_key = settings.STRIPE_API_KEY
         get_session = stripe.checkout.Session.retrieve(session_id)
         return get_session.get('payment_status')
+
+
+def mailing_util(subject: str,
+                 message: str,
+                 recipient_list: list,
+                 from_email=settings.EMAIL_HOST_USER
+                 ):
+    try:
+        status_send = send_mail(
+            subject=subject,
+            message=message,
+            from_email=from_email,
+            recipient_list=recipient_list
+        )
+    except smtplib.SMTPException:
+        raise smtplib.SMTPException

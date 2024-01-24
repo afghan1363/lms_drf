@@ -5,6 +5,7 @@ from lms_app.serializers import CourseSerializer, LessonSerializer, SubscribeSer
 from lms_app.permissions import Author, Moderator
 from rest_framework.permissions import IsAuthenticated
 from lms_app.paginators import CoursesPaginator, LessonsPaginator
+from lms_app.tasks import send_updates
 
 
 # Create your views here.
@@ -28,6 +29,10 @@ class CourseViewSet(ModelViewSet):
         new_course = serializer.save()
         new_course.author = self.request.user
         new_course.save()
+
+    def perform_update(self, serializer):
+        course = serializer.save()
+        send_updates.delay(course.pk)
 
 
 class LessonCreateView(CreateAPIView):
