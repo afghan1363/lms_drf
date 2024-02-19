@@ -175,7 +175,7 @@ SWAGGER_SETTINGS = {
         }
     }
 }
-STRIPE_API_KEY = os.getenv('stripe_api_key')
+STRIPE_API_KEY = os.getenv('STRIPE_API_KEY')
 
 CELERY_BROKER_URL = os.getenv('REDIS_LOCATION')
 CELERY_RESULT_BACKEND = os.getenv('REDIS_LOCATION')
