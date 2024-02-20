@@ -189,7 +189,7 @@ CELERY_BEAT_SCHEDULE = {
 
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
-EMAIL_USE_TLS = bool(int(os.getenv('EMAIL_USE_TLS')))
-EMAIL_USE_SSL = bool(int(os.getenv('EMAIL_USE_SSL')))
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
